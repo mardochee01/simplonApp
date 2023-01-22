@@ -1,0 +1,40 @@
+{% extends 'participant/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mt-2">
+            <h4 class="text-center alert alert-warning">Liste des participants inscrits</h4>
+            {% if part %}
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom du participant</th>
+                    <th scope="col">Prénoms du participant</th>
+                    <th scope="col">Numero de télephone</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for pt in part %}
+                  <tr>
+                    <th scope="row">{{pt.id}}</th>
+                    <td>{{pt.lastName}}</td>
+                    <td>{{pt.firstName}}</td>
+                    <td>{{pt.phoneNumber}}</td>
+                    <td>{{pt.email}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+            <h4 class="text-center alert alert-warning">Pas d'enregistrement</h4>
+            {% endif %}
+            <div class="col text-center">
+                <a href="{% url 'registration' %}" type="button" class="btn btn-success btn-block mb-4">Ajouter un nouveau participant</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
